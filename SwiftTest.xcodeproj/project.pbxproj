@@ -10,6 +10,7 @@
 		650E31A920B517E500B31AF4 /* SwiftTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 650E319F20B517E400B31AF4 /* SwiftTest.framework */; };
 		650E31AE20B517E500B31AF4 /* SwiftTestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650E31AD20B517E500B31AF4 /* SwiftTestTests.swift */; };
 		650E31B020B517E500B31AF4 /* SwiftTest.h in Headers */ = {isa = PBXBuildFile; fileRef = 650E31A220B517E400B31AF4 /* SwiftTest.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		650E31BA20B5194D00B31AF4 /* factorial.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650E31B920B5194D00B31AF4 /* factorial.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +30,7 @@
 		650E31A820B517E500B31AF4 /* SwiftTestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftTestTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		650E31AD20B517E500B31AF4 /* SwiftTestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftTestTests.swift; sourceTree = "<group>"; };
 		650E31AF20B517E500B31AF4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		650E31B920B5194D00B31AF4 /* factorial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = factorial.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +75,7 @@
 			children = (
 				650E31A220B517E400B31AF4 /* SwiftTest.h */,
 				650E31A320B517E400B31AF4 /* Info.plist */,
+				650E31B920B5194D00B31AF4 /* factorial.swift */,
 			);
 			path = SwiftTest;
 			sourceTree = "<group>";
@@ -148,6 +151,7 @@
 				TargetAttributes = {
 					650E319E20B517E400B31AF4 = {
 						CreatedOnToolsVersion = 9.3.1;
+						LastSwiftMigration = 0930;
 					};
 					650E31A720B517E500B31AF4 = {
 						CreatedOnToolsVersion = 9.3.1;
@@ -194,6 +198,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				650E31BA20B5194D00B31AF4 /* factorial.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -338,6 +343,7 @@
 		650E31B420B517E500B31AF4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -357,6 +363,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.ferryfair.SwiftTest;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
@@ -364,6 +371,7 @@
 		650E31B520B517E500B31AF4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -390,6 +398,7 @@
 		650E31B720B517E500B31AF4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 92458GN43Z;
@@ -408,6 +417,7 @@
 		650E31B820B517E500B31AF4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 92458GN43Z;
