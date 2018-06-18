@@ -13,24 +13,15 @@ class SwiftTestTests: XCTestCase {
    
    override func setUp() {
       super.setUp()
-      // Put setup code here. This method is called before the invocation of each test method in the class.
+      // Put setup code here. This method is called before the invocation of 
+      // each test method in the class.
    }
    
    override func tearDown() {
-      // Put teardown code here. This method is called after the invocation of each test method in the class.
+      // Put teardown code here. This method is called after the invocation of 
+      // each test method in the class.
       super.tearDown()
    }
-   
-   /*func testExample() {
-      // This is an example of a functional test case.
-      // Use XCTAssert and related functions to verify your tests produce the correct results.
-   }*/
-   
-   /*func testExample() {
-//      self.measure {
-//         factorial_by_loop(n:20)
-//      }
-   }*/
    
    func testPerformanceFactorial() {
       self.measure {
@@ -42,6 +33,19 @@ class SwiftTestTests: XCTestCase {
    func testPerformanceFibonacci() {
       self.measure {
          print(fibonacci(15))
+         let currentTime = mach_absolute_time()
+         print("CurrentTime: ", currentTime)
+      }
+   }
+   
+   func testPerformanceClassNStruct() {
+      self.measure {
+         print("Int size: ", MemoryLayout<Int>.size)
+         print("CChar size: ", MemoryLayout<CChar>.size)
+         print("Character size: ", MemoryLayout<Character>.size)
+         print("Float size: ", MemoryLayout<Float>.size)
+         print("Class size: ", MemoryLayout<ClassEG_>.size)
+         print("Struct size: ", MemoryLayout<StructEG_>.size)
       }
    }
    
