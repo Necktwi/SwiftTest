@@ -29,59 +29,78 @@ func sysNS_to_absS_str (_ ns:UInt64) -> String {
    return NF.string(for: Double(ns*RTFactor)/1000000000)!
 }
 
+let ResultsFile = "SwiftTestResults.txt"
+let CDURL:URL = NSURL.fileURL(withPath: FileManager.default.currentDirectoryPath)
+let FileURL = CDURL.appendingPathComponent(ResultsFile)
+let FH = try! FileHandle(forWritingTo: FileURL)
+FH.truncateFile(atOffset: 0)
+func cf_log (_ items: Any...) {
+   var str = ""
+   for item in items {
+      var tmp:String=""
+      print(item, terminator:" ", to:&tmp)
+      str.append(tmp)
+   }
+   str.removeLast()
+   print(str)
+   str.append("\n")
+   FH.write(str.data(using: .utf8)!)
+}
+
 SuiteStart = mach_absolute_time()
 
-print("%SUITE_STARTED% testSwift\n")
+cf_log("%SUITE_STARTED% SwiftTest\n")
 
 var f:UInt = 0
-print("%TEST_STARTED% factorial")
+cf_log("%TEST_STARTED% factorial")
 TestStart =  mach_absolute_time()
    f = factorial(15)
 TestEnd = mach_absolute_time()
-print("factorial(15):", f)
+cf_log("factorial(15):", f)
 Diff = TestEnd - TestStart;
-print("%TEST_FINISHED% time:", sysNS_to_absS_str(Diff), "factorial\n")
+cf_log("%TEST_FINISHED% time:", sysNS_to_absS_str(Diff), "factorial\n")
 
-print("%TEST_STARTED% factorial_by_loop")
+cf_log("%TEST_STARTED% factorial_by_loop")
 TestStart =  mach_absolute_time()
    f = factorial_by_loop(15)
 TestEnd = mach_absolute_time()
-print("factorial_by_loop(15):", f)
+cf_log("factorial_by_loop(15):", f)
 Diff = TestEnd - TestStart;
-print("%TEST_FINISHED% time:", sysNS_to_absS_str(Diff), 
+cf_log("%TEST_FINISHED% time:", sysNS_to_absS_str(Diff), 
    "factorial_by_loop\n")
 
-print("%TEST_STARTED% fibonacci")
+cf_log("%TEST_STARTED% fibonacci")
 TestStart =  mach_absolute_time()
    f = fibonacci(15)
 TestEnd = mach_absolute_time()
-print("fibonacci(15):", fibonacci(15))
+cf_log("fibonacci(15):", fibonacci(15))
 Diff = TestEnd - TestStart;
-print("%TEST_FINISHED% time:", sysNS_to_absS_str(Diff), "fibonacci\n")
+cf_log("%TEST_FINISHED% time:", sysNS_to_absS_str(Diff), "fibonacci\n")
 
-print("%TEST_STARTED% fibonacci_by_loop")
+cf_log("%TEST_STARTED% fibonacci_by_loop")
 TestStart =  mach_absolute_time()
    f = fibonacci_by_loop(15)
 TestEnd = mach_absolute_time()
-print("fibonacci_by_loop(15):", f)
+cf_log("fibonacci_by_loop(15):", f)
 Diff = TestEnd - TestStart;
-print("%TEST_FINISHED% time:", sysNS_to_absS_str(Diff), 
+cf_log("%TEST_FINISHED% time:", sysNS_to_absS_str(Diff), 
    "fibonacci_by_loop\n")
 
-print("%TEST_STARTED% ClassNStruct")
+cf_log("%TEST_STARTED% ClassNStruct")
 TestStart =  mach_absolute_time();
-print("{")
-print("\tInt size:",    MemoryLayout<Int>.size)
-print("\tFloat size:",  MemoryLayout<Float>.size)
-print("\tUInt16 size:", MemoryLayout<UInt16>.size)
-print("\tCChar size:",  MemoryLayout<CChar>.size)
-print("}")
-print("Class size:",    MemoryLayout<ClassEG_>.size)
-print("Struct size:",   MemoryLayout<StructEG_>.size)
+cf_log("{")
+cf_log("\tInt size:",    MemoryLayout<Int>.size)
+cf_log("\tFloat size:",  MemoryLayout<Float>.size)
+cf_log("\tUInt16 size:", MemoryLayout<UInt16>.size)
+cf_log("\tCChar size:",  MemoryLayout<CChar>.size)
+cf_log("}")
+cf_log("Class size:",    MemoryLayout<ClassEG_>.size)
+cf_log("Struct size:",   MemoryLayout<StructEG_>.size)
 TestEnd =  mach_absolute_time()
 Diff = TestEnd - TestStart;
-print("%TEST_FINISHED% time:", sysNS_to_absS_str(Diff), "ClassNStruct\n")
+cf_log("%TEST_FINISHED% time:", sysNS_to_absS_str(Diff), "ClassNStruct\n")
 
 SuiteEnd =  mach_absolute_time()
 Diff = SuiteEnd - SuiteStart;
-print("%SUITE_FINISHED% time:", sysNS_to_absS_str(Diff))
+cf_log("%SUITE_FINISHED% time:", sysNS_to_absS_str(Diff))
+FH.closeFile()
