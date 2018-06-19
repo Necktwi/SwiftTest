@@ -23,6 +23,8 @@ var RTFactor = UInt64(Info.numer)/UInt64(Info.denom)
 let NF = NumberFormatter()
 NF.numberStyle = NumberFormatter.Style.decimal
 NF.maximumFractionDigits = 9
+NF.minimumIntegerDigits = 10
+NF.groupingSeparator = ""
 func sysNS_to_absS_str (_ ns:UInt64) -> String {
    return NF.string(for: Double(ns*RTFactor)/1000000000)!
 }
