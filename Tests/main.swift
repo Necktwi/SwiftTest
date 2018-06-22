@@ -52,6 +52,7 @@ SuiteStart = mach_absolute_time()
 cf_log("%SUITE_STARTED% SwiftTest\n")
 
 var f:UInt = 0
+var f2:UInt = 0
 cf_log("%TEST_STARTED% factorial")
 TestStart =  mach_absolute_time()
    f = factorial(15)
@@ -79,9 +80,12 @@ cf_log("%TEST_FINISHED% time:", sysNS_to_absS_str(Diff), "fibonacci\n")
 
 cf_log("%TEST_STARTED% fibonacci_by_loop")
 TestStart =  mach_absolute_time()
-   f = fibonacci_by_loop(15)
+   f = fibonacci_by_loop(93)
+   f2 = fibonacci_by_loop(92)
 TestEnd = mach_absolute_time()
-cf_log("fibonacci_by_loop(15):", f)
+cf_log("fibonacci_by_loop(93):", f)
+cf_log("fibonacci_by_loop(92):", f2)
+cf_log("Golden ration:", Double(f)/Double(f2))
 Diff = TestEnd - TestStart;
 cf_log("%TEST_FINISHED% time:", sysNS_to_absS_str(Diff), 
    "fibonacci_by_loop\n")
